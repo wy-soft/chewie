@@ -16,10 +16,16 @@ import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
 class MaterialControls extends StatefulWidget {
-  const MaterialControls({this.showPlayButton = true, super.key});
+  const MaterialControls({this.showPlayButton = true,this.showBackwardButton = true,this.showForwardButton = true, super.key});
 
   final bool showPlayButton;
 
+  /// 回退按钮
+  final bool showBackwardButton;
+
+  /// 快进按钮
+  final bool showForwardButton;
+  
   @override
   State<StatefulWidget> createState() {
     return _MaterialControlsState();
@@ -386,7 +392,7 @@ class _MaterialControlsState extends State<MaterialControls>
                 iconData: Icons.replay_10,
                 backgroundColor: Colors.black54,
                 iconColor: Colors.white,
-                show: showPlayButton,
+                show: showPlayButton && showBackwardButton,
                 fadeDuration: chewieController.materialSeekButtonFadeDuration,
                 iconSize: chewieController.materialSeekButtonSize,
                 onPressed: _seekBackward,
@@ -407,7 +413,7 @@ class _MaterialControlsState extends State<MaterialControls>
                 iconData: Icons.forward_10,
                 backgroundColor: Colors.black54,
                 iconColor: Colors.white,
-                show: showPlayButton,
+                show: showPlayButton && showForwardButton,
                 fadeDuration: chewieController.materialSeekButtonFadeDuration,
                 iconSize: chewieController.materialSeekButtonSize,
                 onPressed: _seekForward,
