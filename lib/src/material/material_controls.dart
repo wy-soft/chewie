@@ -600,6 +600,7 @@ class _MaterialControlsState extends State<MaterialControls>
         ? ChewieController.defaultHideControlsTimer
         : chewieController.hideControlsTimer;
     _hideTimer = Timer(hideControlsTimer, () {
+      if (!mounted) return;
       setState(() {
         notifier.hideStuff = true;
       });
